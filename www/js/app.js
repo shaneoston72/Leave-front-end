@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'smartAlarm.services' is found in services.js
 // 'smartAlarm.controllers' is found in controllers.js
-angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services'])
+angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
