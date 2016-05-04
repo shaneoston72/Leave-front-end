@@ -50,6 +50,6 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     }
   });
 
-  $urlRouterProvider.otherwise('/tab/dashboard');
+  $urlRouterProvider.otherwise('/login');
 
 });
