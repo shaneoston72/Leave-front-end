@@ -40,6 +40,30 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     }
   })
 
+  .state('tab.alarm', {
+    url: '/alarm',
+    views: {
+      'tab-alarm': {
+        templateUrl: 'templates/tab-alarm.html'      }
+    }
+  })
+
+  .state('tab.weather', {
+    url: '/weather',
+    views: {
+      'tab-weather': {
+        templateUrl: 'templates/tab-weather.html'      }
+    }
+  })
+
+  .state('tab.destination', {
+    url: '/destination',
+    views: {
+      'tab-destination': {
+        templateUrl: 'templates/tab-destination.html'      }
+    }
+  })
+
   .state('tab.account', {
     url: '/account',
     views: {

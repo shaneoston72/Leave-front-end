@@ -1,19 +1,25 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <div class='list card' id='alarm'>
-      <div class="item item-divider"> Current Alarm </div>
-      <div class="item item-body"> 06:00 </div>
-    </div>
-    <div class='list card' id='weather'>
-      <div class="item item-divider"> Current Weather </div>
-      <div class="item item-body"> Sunny☀︎ </div>
-    </div>
-    <div class='list card' id='destination'>
-      <div class="item item-divider"> Destination </div>
-      <div class="item item-body">
+
+    <ion-list>
+      <ion-item id="alarm" class="item-remove-animate item-icon-right" type="item-text-wrap" href="#/tab/alarm">
+        <h2> Current Alarm </h2>
+        <p> 06:00 </p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
+      <ion-item id="weather" class="item-remove-animate item-icon-right" type="item-text-wrap" href="#/tab/weather">
+        <h2> Current Weather </h2>
+        <p> Sunny☀︎ </p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
+      <ion-item id="destination" class="item-remove-animate item-icon-right" type="item-text-wrap" href="#/tab/destination">
+        <h2> Destination </h2>
         <p>Home to Makers</p>
         <p>Travel Time: 30 minutes</p>
-      </div>
-    </div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

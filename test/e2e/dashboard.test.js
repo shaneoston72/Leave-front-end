@@ -18,4 +18,25 @@ describe('Dashboard', function() {
     var destination = element(by.id('destination'));
     expect(destination.isPresent()).toBe(true);
   });
+
+  it('takes users to alarm page', function() {
+    var alarm = element(by.id('alarm'));
+    alarm.click().then(function() {
+      expect(browser.getLocationAbsUrl()).toMatch('/tab/alarm');
+    });
+  });
+
+  it('takes users to weather page', function() {
+    var weather = element(by.id('weather'));
+    weather.click().then(function() {
+      expect(browser.getLocationAbsUrl()).toMatch('/tab/weather');
+    });
+  });
+
+  it('takes users to destination page', function() {
+    var destination = element(by.id('destination'));
+    destination.click().then(function() {
+      expect(browser.getLocationAbsUrl()).toMatch('/tab/destination');
+    });
+  });
 });
