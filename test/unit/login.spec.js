@@ -1,15 +1,15 @@
 describe('LoginCtrl', function() {
 
-  var controller,
+  var logInCtrl,
       deferredLogin,
       userSessionMock,
-      stateMock,
+      locationMock,
       ionicPopupMock,
       scope;
 
   beforeEach(module('smartAlarm'));
 
-  beforeEach(inject(function($controller, $q){
+  beforeEach(inject(function($controller, $q, $rootScope){
     deferredLogin = $q.defer();
 
     userSessionMock = {
@@ -17,41 +17,43 @@ describe('LoginCtrl', function() {
                     .and.returnValue(deferredLogin.promise)
     };
 
-    stateMock = jasmine.createSpyObj('$state spy', ['go']);
+    locationMock = jasmine.createSpyObj('$location spy', ['path']);
 
     ionicPopupMock = jasmine.createSpyObj('$ionicPopup spy', ['alert']);
 
-    controller = $controller('LoginCtrl', {
-      '$ionicPopup': ionicPopupMock,
-      '$state': stateMock,
-      'UserSession': userSessionMock,
-      '$scope': {}
+    scope = $rootScope.$new();
+
+    logInCtrl = $controller('LoginCtrl', {
+      $scope: scope,
+      $location: locationMock,
+      $ionicPopup: ionicPopupMock,
+      UserSession: userSessionMock,
     });
 
   }));
 
-  describe('#login', function(){
+  describe('#doLogin', function(){
 
-    beforeEach(inject(function(_$rootScope_){
-      $rootScope = _$rootScope_;
-      controller.email = 'test@gmail.com';
-      controller.password = 'password1';
-      controller.login();
+    beforeEach(inject(function(){
+      scope.email = 'test@gmail.com';
+      scope.password = 'password1';
+      scope.login();
     }));
 
-    it('should call login on UserSession', function(){
-      expect(userSessionMock).toHaveBeenCalledWith('test@gmail.com', 'password1');
+  //   it("should have a $scope variable", function() {
+  //     expect($scope).toBeDefined();
+  // });
 
-      deferredLogin.resolve();
-      $rootScope.$digest();
-    });
+    // it('should call login on UserSession', function(){
+    //   expect(userSessionMock.login).toHaveBeenCalledWith('test@gmail.com', 'password1');
+    // });
 
     describe('when the login is executed,', function(){
       it('if successful, should change state to dashboard', function(){
 
         // TODO: Mock the login response from DinnerService
 
-        expect(stateMock.go).toHaveBeenCalledWith('dashboard');
+        expect(locationMock.path).toHaveBeenCalledWith('/tab/dashboard');
       });
       it('if unsuccessful, should show a popup', function(){
 
