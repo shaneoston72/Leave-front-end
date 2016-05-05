@@ -1,6 +1,6 @@
 angular.module('smartAlarm.controllers', [])
 
-.controller('LoginCtrl', function($scope, $location, $ionicPopup, $rootScope) {
+.controller('LoginCtrl', function($scope, $location, UserSession, $ionicPopup, $rootScope) {
   $scope.data = {};
 
   $scope.login = function() {
@@ -10,13 +10,15 @@ angular.module('smartAlarm.controllers', [])
         window.localStorage['userId'] = data.id;
         window.localStorage['userName'] = data.name;
         $location.path('/tab/dashboard');
-      },
-      function(err){
-        var error = err["data"]["error"] || err.data.join('. ')
-        var con
-      }
-    )
-    $location.path('/tab/dashboard');
+      }//,
+      // function(err){
+      //   var error = err["data"]["error"] || err.data.join('. ')
+      //   var confirmPopup = $ionicPopup.alert({
+      //     title: 'An error occured',
+      //     template: error
+      //   });
+      // }
+    );
   };
 })
 
