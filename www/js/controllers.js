@@ -4,16 +4,32 @@ angular.module('smartAlarm.controllers', [])
   $scope.data = {};
 
   $scope.login = function() {
-    $location.path('/tab/dashboard');
-  };
-})
+    var user_session = new UserSession({ user: $scope.data });
 
-.controller('DashboardCtrl', function($scope) {
+    user_session.$save(
 
-})
+      function(data){
+        window.localStorage['userId'] = data.id;
+        window.localStorage['email'] = data.email;
+        $location.path('/tab/dashboard');
+      },
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+      function(err){
+        var error = err["data"]["error"] || err.data.join('. ')
+        var confirmPopup = $ionicPopup.alert({
+          title: 'An error occured',
+          template: error
+        });
+      }
+    );
   };
 });
+// .controller('DashboardCtrl', function($scope) {
+//
+// })
+//
+// .controller('AccountCtrl', function($scope) {
+//   $scope.settings = {
+//     enableFriends: true
+//   };
+// });
