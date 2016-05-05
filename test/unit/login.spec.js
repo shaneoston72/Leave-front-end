@@ -4,7 +4,8 @@ describe('LoginCtrl', function() {
       deferredLogin,
       userSessionMock,
       stateMock,
-      ionicPopupMock;
+      ionicPopupMock,
+      scope;
 
   beforeEach(module('smartAlarm'));
 
@@ -23,22 +24,26 @@ describe('LoginCtrl', function() {
     controller = $controller('LoginCtrl', {
       '$ionicPopup': ionicPopupMock,
       '$state': stateMock,
-      'UserSession': userSessionMock
+      'UserSession': userSessionMock,
+      '$scope': {}
     });
 
   }));
 
-  describe('#doLogin', function(){
+  describe('#login', function(){
 
     beforeEach(inject(function(_$rootScope_){
       $rootScope = _$rootScope_;
       controller.email = 'test@gmail.com';
       controller.password = 'password1';
-      controller.doLogin();
+      controller.login();
     }));
 
     it('should call login on UserSession', function(){
-      expect(userSessionMock.login).toHaveBeenCalledWith('test@gmail.com', 'password1');
+      expect(userSessionMock).toHaveBeenCalledWith('test@gmail.com', 'password1');
+
+      deferredLogin.resolve();
+      $rootScope.$digest();
     });
 
     describe('when the login is executed,', function(){
