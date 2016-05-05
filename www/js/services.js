@@ -6,5 +6,5 @@ angular.module('smartAlarm.services', [])
 })
 
 .factory('UserSession', function($resource) {
-  //TODO: add user session logic (api call)
+  return $resource("http://localhost:3000/users/sign_in.json");
 });
