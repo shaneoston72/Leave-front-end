@@ -5,7 +5,9 @@ module.exports = function(config){
         'www/lib/ionic/js/ionic.bundle.js',
         'www/lib/ionic/js/angular-mocks/angular-mocks.js',
         'www/js/**/*.js',
-        'test/unit/**/*.js'
+        'test/unit/**/*.js',
+        'www/lib/ionic/js/angular/angular.js',
+        'www/lib/ionic/js/angular/angular-*.js',
       ],
       autoWatch : true,
       frameworks: ['jasmine'],
