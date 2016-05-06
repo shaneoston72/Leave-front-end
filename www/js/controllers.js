@@ -26,7 +26,31 @@ angular.module('smartAlarm.controllers', [])
 
 })
 
-.controller('DestinationTimeCtrl', function ($scope, ionicTimePicker) {
+.controller('DestinationTimeCtrl', function ($scope, ionicTimePicker, $ionicPopup) {
+
+    $scope.stationList = [
+      'Aldgate', 'Aldgate East','Westminster'
+    ];
+
+    $scope.showList = function(){
+      $scope.stationList = [
+        'Aldgate', 'Aldgate East','Westminster'
+      ];
+
+      var listPopup = $ionicPopup.show({
+        template: '<ion-list>                                '+
+                  '  <ion-item ng-repeat="item in stationList"> '+
+                  '    {{item}}                              '+
+                  '  </ion-item>                             '+
+                  '</ion-list>                               ',
+
+        title: 'List',
+        scope: $scope,
+        buttons: [
+          { text: 'Cancel' },
+        ]
+      });
+  };
 
     $scope.openTimePicker = function () {
       var ipObj = {

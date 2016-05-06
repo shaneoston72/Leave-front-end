@@ -2,7 +2,8 @@
   <ion-content class="scroll-content ionic-scroll has-header has-tabs">
     <div class="scroll" style="transform: translate3d(0px, 34px, 0px) scale(1);">
       <div class="padding" id="destTime">
-        <h4 class="text-center">Choose your starting station</h4>
+        <button class="button button-positive button-block" ng-click="station.show()">Choose your departure station</button>
+        <button class="button button-positive button-block" ng-click="showList()">TO</button>
           <div class="padding-vertical">
             <h5 class="text-center">TIME FROM ALARM</h5>
             <button class="button button-block button-positive overflowShow" ng-click="openTimePicker()">Change your alarm</button>
