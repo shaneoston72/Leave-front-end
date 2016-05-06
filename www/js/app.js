@@ -1,4 +1,4 @@
-angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource'])
+angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ionic-timepicker'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -12,6 +12,17 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
       StatusBar.styleDefault();
     }
   });
+})
+
+.config(function (ionicTimePickerProvider) {
+  var timePickerObj = {
+    inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60)),
+    format: 24,
+    step: 5,
+    setLabel: 'Set',
+    closeLabel: 'Close'
+  };
+  ionicTimePickerProvider.configTimePicker(timePickerObj);
 })
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -42,27 +53,31 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     }
   })
 
-  .state('tab.alarm', {
-    url: '/alarm',
+  .state('tab.destination', {
+    url: '/destTime',
     views: {
-      'tab-alarm': {
-        templateUrl: 'templates/tab-alarm.html'      }
+      'tab-destination': {
+        templateUrl: 'templates/tab-destination.html',
+        controller: 'DestinationTimeCtrl'
+      }
     }
   })
+
+  // .state('tab.alarm', {
+  //   url: '/alarm',
+  //   views: {
+  //     'tab-alarm': {
+  //       templateUrl: 'templates/tab-alarm.html',
+  //       controller: 'AlarmCtrl'
+  //     }
+  //   }
+  // })
 
   .state('tab.weather', {
     url: '/weather',
     views: {
       'tab-weather': {
         templateUrl: 'templates/tab-weather.html'      }
-    }
-  })
-
-  .state('tab.destination', {
-    url: '/destination',
-    views: {
-      'tab-destination': {
-        templateUrl: 'templates/tab-destination.html'      }
     }
   })
 

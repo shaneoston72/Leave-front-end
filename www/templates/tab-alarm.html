@@ -1,16 +1,16 @@
 <ion-view view-title="Alarm">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" href="">
-
-        <h2>Alarm Page</h2>
-
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+  <ion-content class="scroll-content ionic-scroll has-header has-tabs">
+    <div class="scroll" style="transform: translate3d(0px, 34px, 0px) scale(1);">
+      <div class="padding" id="workTime">
+        <h4 class="text-center">Your Alarm</h4>
+          <div class="padding-vertical">
+            <h5 class="text-center">TIME FROM ALARM</h5>
+            <button class="button button-block button-positive overflowShow" ng-click="openTimePicker()">Change your alarm</button>
+          </div>
+      </div>
+    </div>
+    <div class="scroll-bar scroll-bar-v">
+      <div class="scroll-bar-indicator" style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px; transform-origin: center top 0px;"></div>
+    </div>
   </ion-content>
 </ion-view>

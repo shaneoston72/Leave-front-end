@@ -9,11 +9,11 @@ describe('Clicking on the login button ', function(){
     });
 
     it('should validate the credentials for a successful login and display the Dashboard view', function() {
-      email.sendKeys('test@test.com');
-      password.sendKeys('password');
+      email.sendKeys('shane@shaneoston.com');
+      password.sendKeys('test1234');
 
       loginButton.click().then(function() {
-        expect(browser.getLocationAbsUrl()).toMatch('/dashboard');
+        expect(browser.getLocationAbsUrl()).toMatch('/tab/dashboard');
       });
     });
 
