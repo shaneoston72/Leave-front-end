@@ -56,29 +56,10 @@ angular.module('smartAlarm.controllers', [])
     $scope.$on('modal.removed', function() {
 
     });
-  //   $scope.stationList = [
-  //     'Aldgate', 'Aldgate East','Westminster'
-  //   ];
-  //
-  //   $scope.showList = function(){
-  //     $scope.stationList = [
-  //       'Aldgate', 'Aldgate East','Westminster'
-  //     ];
-  //
-  //     var listPopup = $ionicPopup.show({
-  //       template: '<ion-list>                                '+
-  //                 '  <ion-item ng-repeat="item in stationList"> '+
-  //                 '    {{item}}                              '+
-  //                 '  </ion-item>                             '+
-  //                 '</ion-list>                               ',
-  //
-  //       title: 'List',
-  //       scope: $scope,
-  //       buttons: [
-  //         { text: 'Cancel' },
-  //       ]
-  //     });
-  // };
+
+    $scope.stations = [
+      'Aldgate', 'Aldgate East','Westminster'
+    ];
 
     $scope.openTimePicker = function () {
       var ipObj = {
@@ -98,6 +79,11 @@ angular.module('smartAlarm.controllers', [])
     };
 })
 
+// .controller('stationController', function() {
+//
+//   $scope.stations = ['Aldgate', 'Westminster', 'Liverpool Street'];
+//
+// })
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
