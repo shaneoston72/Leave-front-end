@@ -26,31 +26,59 @@ angular.module('smartAlarm.controllers', [])
 
 })
 
-.controller('DestinationTimeCtrl', function ($scope, ionicTimePicker, $ionicPopup) {
+.controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal) {
 
-    $scope.stationList = [
-      'Aldgate', 'Aldgate East','Westminster'
-    ];
+    console.log('TravelPlanCtrl');
+    // move to modal controller
+    $ionicModal.fromTemplateUrl('templates/stationModal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
 
-    $scope.showList = function(){
-      $scope.stationList = [
-        'Aldgate', 'Aldgate East','Westminster'
-      ];
+    $scope.openModal = function() {
+      $scope.modal.show();
+    };
 
-      var listPopup = $ionicPopup.show({
-        template: '<ion-list>                                '+
-                  '  <ion-item ng-repeat="item in stationList"> '+
-                  '    {{item}}                              '+
-                  '  </ion-item>                             '+
-                  '</ion-list>                               ',
+    $scope.closeModal = function() {
+      $scope.modal.hide();
+    };
 
-        title: 'List',
-        scope: $scope,
-        buttons: [
-          { text: 'Cancel' },
-        ]
-      });
-  };
+    $scope.$on('$destory', function() {
+      $scope.modal.remove();
+    });
+
+    $scope.$on('modal.hidden', function() {
+
+    });
+
+    $scope.$on('modal.removed', function() {
+
+    });
+  //   $scope.stationList = [
+  //     'Aldgate', 'Aldgate East','Westminster'
+  //   ];
+  //
+  //   $scope.showList = function(){
+  //     $scope.stationList = [
+  //       'Aldgate', 'Aldgate East','Westminster'
+  //     ];
+  //
+  //     var listPopup = $ionicPopup.show({
+  //       template: '<ion-list>                                '+
+  //                 '  <ion-item ng-repeat="item in stationList"> '+
+  //                 '    {{item}}                              '+
+  //                 '  </ion-item>                             '+
+  //                 '</ion-list>                               ',
+  //
+  //       title: 'List',
+  //       scope: $scope,
+  //       buttons: [
+  //         { text: 'Cancel' },
+  //       ]
+  //     });
+  // };
 
     $scope.openTimePicker = function () {
       var ipObj = {
