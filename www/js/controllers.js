@@ -10,14 +10,14 @@ angular.module('smartAlarm.controllers', [])
         window.localStorage['userId'] = data.id;
         window.localStorage['userName'] = data.name;
         $location.path('/tab/dashboard');
-      }//,
-      // function(err){
-      //   var error = err["data"]["error"] || err.data.join('. ')
-      //   var confirmPopup = $ionicPopup.alert({
-      //     title: 'An error occured',
-      //     template: error
-      //   });
-      // }
+      },
+      function(err){
+        var error = err["data"]["error"] || err.data.join('. ')
+        var confirmPopup = $ionicPopup.alert({
+          title: 'An error occured',
+          template: error
+        });
+      }
     );
   };
 })

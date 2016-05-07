@@ -24,7 +24,7 @@ describe('Clicking on the login button ', function(){
       loginButton.click().then(function() {
         expect(browser.getLocationAbsUrl()).toMatch('login');
 
-        var popup = element(by.css('.popup-container.poup-showing.active'));
+        var popup = element(by.css('.popup-container.popup-showing.active'));
         expect(popup.isDisplayed()).toBeTruthy();
       });
     });

@@ -73,16 +73,6 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     controller: 'DestinationTimeCtrl' // needs to be in its own controller
   })
 
-  // .state('tab.alarm', {
-  //   url: '/alarm',
-  //   views: {
-  //     'tab-alarm': {
-  //       templateUrl: 'templates/tab-alarm.html',
-  //       controller: 'AlarmCtrl'
-  //     }
-  //   }
-  // })
-
   .state('tab.weather', {
     url: '/weather',
     views: {

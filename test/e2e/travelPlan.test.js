@@ -9,7 +9,7 @@ describe('TravelPlan', function(){
       travelLink = element(by.id('travelPlan'));
     });
 
-    it('should load the Destination page', function() {
+    it('should load the Travel Plan page', function() {
       email.sendKeys('shane@shaneoston.com');
       password.sendKeys('test1234');
       loginButton.click();
@@ -22,6 +22,7 @@ describe('TravelPlan', function(){
       email.sendKeys('shane@shaneoston.com');
       password.sendKeys('test1234');
       loginButton.click();
+      travelLink.click();
       fromList = element(by.id('fromList'));
       expect(fromList.isPresent()).toBe(true);
     });
