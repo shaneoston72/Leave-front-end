@@ -57,7 +57,9 @@ angular.module('smartAlarm.controllers', [])
 
     });
 
-    $scope.stations = StationList.stations();
+    StationList.success(function(data) {
+      $scope.stations = data;
+    });
 
     $scope.openTimePicker = function () {
       var ipObj = {
