@@ -26,9 +26,9 @@ angular.module('smartAlarm.controllers', [])
 
 })
 
-.controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal) {
+.controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal, StationList) {
 
-    console.log('TravelPlanCtrl');
+    var stations = [];
     // move to modal controller
     $ionicModal.fromTemplateUrl('templates/stationModal.html', {
       scope: $scope,
@@ -57,9 +57,7 @@ angular.module('smartAlarm.controllers', [])
 
     });
 
-    $scope.stations = [
-      'Aldgate', 'Aldgate East','Westminster'
-    ];
+    $scope.stations = StationList.stations();
 
     $scope.openTimePicker = function () {
       var ipObj = {
@@ -79,11 +77,6 @@ angular.module('smartAlarm.controllers', [])
     };
 })
 
-// .controller('stationController', function() {
-//
-//   $scope.stations = ['Aldgate', 'Westminster', 'Liverpool Street'];
-//
-// })
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true

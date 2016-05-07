@@ -1,5 +1,9 @@
 angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ionic-timepicker'])
 
+.constant('ApiEndpoint', {
+  url: 'http://localhost:3000'
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
