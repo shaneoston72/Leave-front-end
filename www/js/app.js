@@ -43,6 +43,12 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     controller: 'LoginCtrl'
   })
 
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'SignupCtrl'
+  })
+
   .state('tab.dashboard', {
     url: '/dashboard',
     views: {
