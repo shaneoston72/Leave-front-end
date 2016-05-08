@@ -1,21 +1,10 @@
-angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ionic-timepicker'])
+angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ionic-timepicker', 'ionic-modal-select'])
 
-.constant('ApiEndpoint', {
-  url: 'http://localhost:3000'
-})
-
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-
-    if (window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
+.filter('capitalize', function() {
+  return function(input, all) {
+    var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
+    return (!!input) ? input.replace(reg, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';
+  };
 })
 
 .config(function (ionicTimePickerProvider) {
@@ -93,4 +82,18 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
 
   $urlRouterProvider.otherwise('/login');
 
+})
+
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+
+    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.disableScroll(true);
+    }
+
+    if (window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
 });
