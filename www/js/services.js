@@ -21,4 +21,8 @@ angular.module('smartAlarm.services', [])
 
 .service('StationList', function($http) {
   return $http.get('/api/stations');
+})
+
+.service('CurrentWeather', function($http) {
+  return $http.get('/api/weather');
 });

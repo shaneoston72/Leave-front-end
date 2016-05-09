@@ -83,7 +83,8 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     url: '/weather',
     views: {
       'tab-weather': {
-        templateUrl: 'templates/tab-weather.html'      }
+        templateUrl: 'templates/tab-weather.html'
+      }
     }
   })
 

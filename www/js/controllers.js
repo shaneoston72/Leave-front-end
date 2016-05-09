@@ -29,6 +29,13 @@ angular.module('smartAlarm.controllers', [])
 
 })
 
+.controller('WeatherCtrl', function($scope, CurrentWeather) {
+  CurrentWeather.success(function(data){
+    $scope.description = data.description;
+    $scope.temperature = data.temperature;
+  });
+})
+
 .controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal, StationList) {
 
     var stations = [];
