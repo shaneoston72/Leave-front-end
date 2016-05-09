@@ -3,13 +3,14 @@
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" href="">
 
-        <h2>Weather Page</h2>
+        <h2 id='weatherTitle'>Current Weather</h2>
 
-        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ul id='currentWeather' ng-controller='WeatherCtrl as controller'>
+         <li>London:</li>
+         <li id='weatherDesc'>{{ description }}</li>
+         <li id='weatherTemp'>{{ temperature }}&#8451;</li>
+       </ul>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>
