@@ -25,4 +25,10 @@ angular.module('smartAlarm.services', [])
 
 .service('CurrentWeather', function($http) {
   return $http.get('/api/weather');
+})
+
+.service('GetTrip', function($http) {
+  return function (tripDetails) {
+      return $http.get('/api/getTrip', [{'getTrip': {method: 'post'}, 'params': tripDetails}]);
+  };
 });
