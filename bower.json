@@ -6,6 +6,10 @@
     "angular-mocks": "1.5.3"
   },
   "dependencies": {
-    "ionic-timepicker": "^0.5.1"
+    "ionic-timepicker": "^0.5.1",
+    "ionic-modal-select": "^1.3.0"
+  },
+  "resolutions": {
+    "angular": "1.5.3"
   }
 }

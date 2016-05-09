@@ -35,55 +35,26 @@ angular.module('smartAlarm.controllers', [])
 
 .controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal, StationList) {
 
-    var stations = [];
-    // move to modal controller
-    $ionicModal.fromTemplateUrl('templates/stationModal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-    });
+  StationList.success(function(data) {
+    $scope.stationNames = data;
+  });
 
-    $scope.openModal = function() {
-      $scope.modal.show();
+  $scope.openTimePicker = function () {
+    var ipObj = {
+      callback: function (val) {
+        if (typeof (val) === 'undefined') {
+          console.log('Time not selected');
+        } else {
+          var selectedTime = new Date(val * 1000);
+          console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+        }
+      },
+      inputTime: 50400,
+      format: 24,
+      setLabel: 'Set'
     };
-
-    $scope.closeModal = function() {
-      $scope.modal.hide();
-    };
-
-    $scope.$on('$destory', function() {
-      $scope.modal.remove();
-    });
-
-    $scope.$on('modal.hidden', function() {
-
-    });
-
-    $scope.$on('modal.removed', function() {
-
-    });
-
-    StationList.success(function(data) {
-      $scope.stations = data;
-    });
-
-    $scope.openTimePicker = function () {
-      var ipObj = {
-        callback: function (val) {
-          if (typeof (val) === 'undefined') {
-            console.log('Time not selected');
-          } else {
-            var selectedTime = new Date(val * 1000);
-            console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
-          }
-        },
-        inputTime: 50400,
-        format: 24,
-        setLabel: 'Set'
-      };
-      ionicTimePicker.openTimePicker(ipObj);
-    };
+    ionicTimePicker.openTimePicker(ipObj);
+  };
 })
 
 .controller('AccountCtrl', function($scope) {

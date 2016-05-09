@@ -1,16 +1,42 @@
 <ion-view view-title="Travel Plan">
   <ion-content class="scroll-content ionic-scroll has-header has-tabs">
     <div id="travelPlan" class="scroll" style="transform: translate3d(0px, 34px, 0px) scale(1);">
-      <div class="padding" />
-        <button id="fromList" class="button button-positive button-block" ng-click="modal.show()">Choose your departure station</button>
+      <div id="fromStation" class="item item-text-wrap">
+        Where will you start?
       </div>
-      <div class="padding" id="toList"/>
-        <button class="button button-positive button-block" ng-click="modal.show()">Choose your destination station</button>
-      </div>
-          <div class="padding-vertical">
-            <h5 class="text-center">TIME FROM ALARM</h5>
-            <button class="button button-block button-positive overflowShow" ng-click="openTimePicker()">Change your alarm</button>
+      <div class="item item-body">
+        <button class="button button-positive button-block" modal-select="" ng-model="fromStation" options="stationNames" has-search="true">
+          Departure station
+          <div class="option">
+            <h2>{{option.Station | capitalize: true}}</h2>
+            <p>{{option.ISC_Code}}</p>
           </div>
+        </button>
+        <div>
+          fromStation: {{fromStation}}
+        </div>
+      </div>
+      <div id="toStation" class="item item-text-wrap">
+        Where are you going?
+      </div>
+      <div class="item item-body">
+        <button class="button button-positive button-block" modal-select="" ng-model="toStation" options="stationNames" has-search="true">
+          Arrival station
+          <div class="option">
+            <h2>{{option.Station | capitalize: true}}</h2>
+            <p>{{option.ISC_Code}}</p>
+          </div>
+        </button>
+        <div>
+          toStation: {{toStation}}
+        </div>
+      </div>
+      <div class="item item-body padding-vertical">
+        What time do you need to be there?
+        <div class="option">
+          <button class="button button-block button-positive overflowShow" ng-click="openTimePicker()">Set arrival time</button>
+        </div>
+      </div>
       </div>
     </div>
     <div class="scroll-bar scroll-bar-v">
