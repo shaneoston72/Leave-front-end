@@ -23,7 +23,16 @@ describe('TravelPlan', function(){
       password.sendKeys('test1234');
       loginButton.click();
       travelLink.click();
-      fromList = element(by.id('fromList'));
+      fromList = element(by.id('fromStation'));
+      expect(fromList.isPresent()).toBe(true);
+    });
+
+    it('should contain a button for \'from\' station', function() {
+      email.sendKeys('shane@shaneoston.com');
+      password.sendKeys('test1234');
+      loginButton.click();
+      travelLink.click();
+      fromList = element(by.id('toStation'));
       expect(fromList.isPresent()).toBe(true);
     });
 
