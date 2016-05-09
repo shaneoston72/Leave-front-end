@@ -10,8 +10,8 @@
         <h2> Current Weather </h2>
         <ul id='currentWeather' ng-controller='WeatherCtrl as controller'>
          <li>London:</li>
-         <li>{{ description }}</li>
-         <li>{{ temperature }}&#8451;</li>
+         <li id='weatherDesc'>{{ description }}</li>
+         <li id='weatherTemp'>{{ temperature }}&#8451;</li>
        </ul>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
