@@ -50,6 +50,7 @@ angular.module('smartAlarm.controllers', [])
         } else {
           var selectedTime = new Date(val * 1000);
           console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+          window.localStorage['time'] = selectedTime;
         }
       },
       inputTime: 50400,
@@ -70,12 +71,13 @@ angular.module('smartAlarm.controllers', [])
 })
 
 .controller("ExampleController", function($scope, $cordovaLocalNotification, NotificationScheduler) {
+  //
+  // var alarmTime = new Date();
+  // alarmTime.setMinutes(alarmTime.getMinutes() + 1);
 
-  var alarmTime = new Date();
-  alarmTime.setMinutes(alarmTime.getMinutes() + 1);
-
-  new NotificationScheduler(alarmTime);
-
+    $scope.add = function() {
+      new NotificationScheduler();
+    };
     $scope.isScheduled = function() {
         $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
             alert("Notification 1234 Scheduled: " + isScheduled);
