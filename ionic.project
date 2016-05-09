@@ -11,6 +11,10 @@
       "proxyUrl": "http://localhost:3000/station_list_api"
     },
     {
+      "path": "/api/user/signup",
+      "proxyUrl": "http://localhost:3000/users/sign_up"
+    },
+    {
       "path": "/api/weather",
       "proxyUrl": "http://localhost:3000/weather_api"
     }
