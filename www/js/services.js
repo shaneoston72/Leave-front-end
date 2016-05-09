@@ -19,11 +19,9 @@ angular.module('smartAlarm.services', [])
   };
 })
 
-.factory('NotificationScheduler', function($cordovaLocalNotification){
+.factory('NotificationScheduler', function(alarmTime, $cordovaLocalNotification){
 
-  var add = function() {
-    var alarmTime = new Date();
-    alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+  var add = function(alarmTime) {
     $cordovaLocalNotification.add({
         id: "1234",
         date: alarmTime,

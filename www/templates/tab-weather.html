@@ -14,7 +14,15 @@
       </ion-item>
     </ion-list>
     <div ng-controller="ExampleController">
-        <button class="button" ng-click="add()">Add notification</button>
+      <label class="item item-input">
+        <span class="hours">Hours</span>
+        <input ng-model="hours" type="number">
+      </label>
+      <label class="item item-input">
+        <span class="minutes">Minutes</span>
+        <input ng-model="minutes" type="number">
+      </label>
+        <button class="button" ng-click="add(hours, minutes)">Add notification</button>
         <button class="button" ng-click="isScheduled()">Is Scheduled</button>
     </div>
   </ion-content>

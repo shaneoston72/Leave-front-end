@@ -75,8 +75,10 @@ angular.module('smartAlarm.controllers', [])
   // var alarmTime = new Date();
   // alarmTime.setMinutes(alarmTime.getMinutes() + 1);
 
-    $scope.add = function() {
-      new NotificationScheduler();
+    $scope.add = function(hours, minutes) {
+      var alarmTime = new Date();
+      alarmTime.setHours(hours, minutes);
+      new NotificationScheduler(alarmTime);
     };
     $scope.isScheduled = function() {
         $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
