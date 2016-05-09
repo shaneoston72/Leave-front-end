@@ -1,4 +1,4 @@
-angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ionic-timepicker', 'ionic-modal-select'])
+angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ionic-timepicker', 'ionic-modal-select', 'ngCordova'])
 
 .filter('capitalize', function() {
   return function(input, all) {
@@ -87,20 +87,27 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     }
   });
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/tab/dashboard');
 
 })
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-
-    if (window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
+.run(function($ionicPlatform, $rootScope, $timeout) {
+    $ionicPlatform.ready(function() {
+        if(window.cordova && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        }
+        if(window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+        window.plugin.notification.local.onadd = function (id, state, json) {
+            var notification = {
+                id: id,
+                state: state,
+                json: json
+            };
+            $timeout(function() {
+                $rootScope.$broadcast("$cordovaLocalNotification:added", notification);
+            });
+        };
+    });
 });
