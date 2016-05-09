@@ -9,6 +9,10 @@
     {
       "path": "/api/stations",
       "proxyUrl": "http://localhost:3000/station_list_api"
+    },
+    {
+      "path": "/api/user/signup",
+      "proxyUrl": "http://localhost:3000/users/sign_up"
     }
   ]
 }
