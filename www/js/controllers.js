@@ -78,6 +78,7 @@ angular.module('smartAlarm.controllers', [])
     $scope.add = function(hours, minutes) {
       var alarmTime = new Date();
       alarmTime.setHours(hours, minutes);
+      console.log(alarmTime);
       new NotificationScheduler(alarmTime);
     };
     $scope.isScheduled = function() {
