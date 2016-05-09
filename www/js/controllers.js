@@ -20,10 +20,20 @@ angular.module('smartAlarm.controllers', [])
       }
     );
   };
+  $scope.redirect = function() {
+    $location.path('/signup');
+  };
 })
 
 .controller('DashboardCtrl', function($scope) {
 
+})
+
+.controller('WeatherCtrl', function($scope, CurrentWeather) {
+  CurrentWeather.success(function(data){
+    $scope.description = data.description;
+    $scope.temperature = data.temperature;
+  });
 })
 
 .controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal, StationList) {
@@ -48,6 +58,17 @@ angular.module('smartAlarm.controllers', [])
     };
     ionicTimePicker.openTimePicker(ipObj);
   };
+})
+
+.controller('SignupCtrl', function($scope, $state, SignUp, $location) {
+  $scope.signUp = function(email, password) {
+    var details = { 'email' : email,
+                    'password': password };
+    new SignUp(details);
+    $location.path('/tab/login');
+  };
+
+
 })
 
 .controller('AccountCtrl', function($scope) {

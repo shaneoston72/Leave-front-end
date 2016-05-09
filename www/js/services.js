@@ -6,9 +6,23 @@ angular.module('smartAlarm.services', [])
 })
 
 .factory('UserSession', function($resource) {
-  return $resource('/api/user');
+  return $resource("/api/user");
+})
+
+.factory('WeatherApi', function($resourcce) {
+  return $resource("weather_api");
+})
+
+.factory('SignUp', function($resource) {
+  return function (details) {
+    return $resource("/api/user/signup", [{"signUp":{method: "post"}, "params": details }]);
+  };
 })
 
 .service('StationList', function($http) {
   return $http.get('/api/stations');
+})
+
+.service('CurrentWeather', function($http) {
+  return $http.get('/api/weather');
 });
