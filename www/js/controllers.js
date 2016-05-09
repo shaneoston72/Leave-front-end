@@ -20,6 +20,9 @@ angular.module('smartAlarm.controllers', [])
       }
     );
   };
+  $scope.redirect = function() {
+    $location.path('/signup');
+  };
 })
 
 .controller('DashboardCtrl', function($scope) {
@@ -84,6 +87,17 @@ angular.module('smartAlarm.controllers', [])
       };
       ionicTimePicker.openTimePicker(ipObj);
     };
+    ionicTimePicker.openTimePicker(ipObj);
+})
+
+.controller('SignupCtrl', function($scope, $state, SignUp, $location) {
+  $scope.signUp = function(email, password) {
+    var details = { 'email' : email,
+                    'password': password };
+    new SignUp(details);
+    $location.path('/tab/login');
+  };
+
 })
 
 .controller('AccountCtrl', function($scope) {
