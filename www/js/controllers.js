@@ -69,22 +69,12 @@ angular.module('smartAlarm.controllers', [])
   };
 })
 
-.controller("ExampleController", function($scope, $cordovaLocalNotification) {
+.controller("ExampleController", function($scope, $cordovaLocalNotification, NotificationScheduler) {
 
-    $scope.add = function() {
-        var alarmTime = new Date();
-        alarmTime.setMinutes(alarmTime.getMinutes() + 1);
-        $cordovaLocalNotification.add({
-            id: "1234",
-            date: alarmTime,
-            message: "This is a message",
-            title: "This is a title",
-            autoCancel: true,
-            sound: null
-        }).then(function () {
-            console.log("The notification has been set");
-        });
-    };
+  var alarmTime = new Date();
+  alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+
+  new NotificationScheduler(alarmTime);
 
     $scope.isScheduled = function() {
         $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
