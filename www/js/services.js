@@ -32,6 +32,7 @@ angular.module('smartAlarm.services', [])
         console.log("The notification has been set");
     });
   };
+  return add;
 })
 
 .service('StationList', function($http) {
