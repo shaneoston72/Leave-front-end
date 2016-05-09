@@ -55,11 +55,12 @@ angular.module('smartAlarm.controllers', [])
   };
 })
 
-.controller('SignupCtrl', function($scope, $state, SignUp) {
+.controller('SignupCtrl', function($scope, $state, SignUp, $location) {
   $scope.signUp = function(email, password) {
     var details = { 'email' : email,
                     'password': password };
     new SignUp(details);
+    $location.path('/tab/login');
   };
 
 })
