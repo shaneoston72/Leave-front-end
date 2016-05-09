@@ -42,29 +42,16 @@ angular.module('smartAlarm.controllers', [])
     $scope.stationNames = data;
   });
 
-  // $scope.openTimePicker = function () {
-  //   var ipObj = {
-  //     callback: function (val) {
-  //       if (typeof (val) === 'undefined') {
-  //         console.log('Time not selected');
-  //       } else {
-  //         var selectedTime = new Date(val * 1000);
-  //         $scope.time = { "hours": selectedTime.getUTCHours(), "minutes": selectedTime.getUTCMinutes() };
-  //         console.log($scope.time);
-  //       }
-  //     },
-  //     inputTime: 50400,
-  //     format: 24,
-  //     setLabel: 'Set'
-  //   };
-  //   ionicTimePicker.openTimePicker(ipObj);
-  // };
 
   $scope.getTime = function(trip) {
-    var tripDetails = { 'fromStation': fromStation,
-                        'toStation': toStation,
-                        'arrivalTime': arrivalTime };
-    console.log(tripDetails);
+    var newTime     = trip.time.toString().substr(16);
+    var newHours    = newTime.substr(0, 2);
+    var newMinutes  = newTime.substr(3, 2);
+
+    var tripDetails = { 'fromStation': trip.fromStation.ICS_Code,
+                        'toStation': trip.toStation.ICS_Code,
+                        'arrivalTime': { 'hours': newHours, 'minutes': newMinutes } };
+
     GetTrip(tripDetails).success(function(data) {
       console.log(data);
     });
