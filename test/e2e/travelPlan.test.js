@@ -1,4 +1,4 @@
-describe('DestinationTime', function(){
+describe('TravelPlan', function(){
     var alarm;
 
     beforeEach(function() {
@@ -6,19 +6,23 @@ describe('DestinationTime', function(){
       email = element(by.model('data.email'));
       password = element(by.model('data.password'));
       loginButton = element(by.id('login'));
-      destLink = element(by.id('destTime'));
+      travelLink = element(by.id('travelPlan'));
     });
 
-    it('should load the Destination page', function() {
+    it('should load the Travel Plan page', function() {
       email.sendKeys('shane@shaneoston.com');
       password.sendKeys('test1234');
       loginButton.click();
-      destLink.click().then(function() {
-        expect(browser.getLocationAbsUrl()).toMatch('/tab/destTime');
+      travelLink.click().then(function() {
+        expect(browser.getLocationAbsUrl()).toMatch('/tab/travelPlan');
       });
     });
 
-    it('should contain a popup list of departure station', function() {
+    it('should contain a button for \'from\' station', function() {
+      email.sendKeys('shane@shaneoston.com');
+      password.sendKeys('test1234');
+      loginButton.click();
+      travelLink.click();
       fromList = element(by.id('fromList'));
       expect(fromList.isPresent()).toBe(true);
     });

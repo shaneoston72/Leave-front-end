@@ -1,0 +1,20 @@
+<ion-view view-title="Travel Plan">
+  <ion-content class="scroll-content ionic-scroll has-header has-tabs">
+    <div id="travelPlan" class="scroll" style="transform: translate3d(0px, 34px, 0px) scale(1);">
+      <div class="padding" />
+        <button id="fromList" class="button button-positive button-block" ng-click="modal.show()">Choose your departure station</button>
+      </div>
+      <div class="padding" id="toList"/>
+        <button class="button button-positive button-block" ng-click="modal.show()">Choose your destination station</button>
+      </div>
+          <div class="padding-vertical">
+            <h5 class="text-center">TIME FROM ALARM</h5>
+            <button class="button button-block button-positive overflowShow" ng-click="openTimePicker()">Change your alarm</button>
+          </div>
+      </div>
+    </div>
+    <div class="scroll-bar scroll-bar-v">
+      <div class="scroll-bar-indicator" style="transform: translate3d(0px, 0px, 0px) scaleY(1); height: 0px; transform-origin: center top 0px;"></div>
+    </div>
+  </ion-content>
+</ion-view>

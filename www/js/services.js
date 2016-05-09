@@ -14,7 +14,11 @@ angular.module('smartAlarm.services', [])
 })
 
 .factory('SignUp', function($resource) {
-  return function (details) { console.log(details);
+  return function (details) {
     return $resource("/api/user/new", [{"signUp":{method: "post"}, "params": details }]);
   };
+})
+
+.service('StationList', function($http) {
+  return $http.get('/api/stations');
 });

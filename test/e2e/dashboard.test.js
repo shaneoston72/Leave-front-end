@@ -4,8 +4,8 @@ describe('Dashboard', function() {
     browser.get('/#/tab/dashboard');
   });
 
-  it('has a link to Destination Time', function() {
-    var destination = element(by.id('destTime'));
+  it('has a link to Travel Plan', function() {
+    var destination = element(by.id('travelPlan'));
     expect(destination.isPresent()).toBe(true);
   });
 

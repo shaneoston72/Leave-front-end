@@ -1,5 +1,9 @@
 angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ionic-timepicker'])
 
+.constant('ApiEndpoint', {
+  url: 'http://localhost:3000'
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
@@ -59,25 +63,21 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     }
   })
 
-  .state('tab.destination', {
-    url: '/destTime',
+  .state('tab.travelPlan', {
+    url: '/travelPlan',
     views: {
-      'tab-destination': {
-        templateUrl: 'templates/tab-destination.html',
-        controller: 'DestinationTimeCtrl'
+      'tab-travelPlan': {
+        templateUrl: 'templates/tab-travelPlan.html',
+        controller: 'TravelPlanCtrl'
       }
     }
   })
 
-  // .state('tab.alarm', {
-  //   url: '/alarm',
-  //   views: {
-  //     'tab-alarm': {
-  //       templateUrl: 'templates/tab-alarm.html',
-  //       controller: 'AlarmCtrl'
-  //     }
-  //   }
-  // })
+  .state('stationModal', {
+    url: '/stationModal',
+    templateUrl: 'templates/stationModal.html',
+    controller: 'DestinationTimeCtrl' // needs to be in its own controller
+  })
 
   .state('tab.weather', {
     url: '/weather',

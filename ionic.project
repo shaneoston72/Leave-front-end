@@ -1,8 +1,14 @@
 {
   "name": "smartAlarm-mobile",
   "app_id": "",
-  "proxies": [{
-    "path": "/api/user",
-    "proxyUrl": "http://localhost:3000/users/sign_in.json"
-  }]
+  "proxies": [
+    {
+      "path": "/api/user",
+      "proxyUrl": "http://localhost:3000/users/sign_in.json"
+    },
+    {
+      "path": "/api/stations",
+      "proxyUrl": "http://localhost:3000/station_list_api"
+    }
+  ]
 }
