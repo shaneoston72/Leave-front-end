@@ -20,36 +20,14 @@ angular.module('smartAlarm.controllers', [])
       }
     );
   };
+  $scope.redirect = function() {
+    $location.path('/signup');
+  };
 })
 
 .controller('DashboardCtrl', function($scope) {
 
 })
-
-.controller('DestinationTimeCtrl', function ($scope, ionicTimePicker, $ionicPopup) {
-
-  $scope.destPopup = function () {
-    $ionicPopup.prompt({
-      title: "title",
-      inputType: 'confirm'
-    }).then(function(){
-
-    });
-  };
-
-  $scope.openTimePicker = function () {
-    var ipObj = {
-      callback: function (val) {
-        if (typeof (val) === 'undefined') {
-          console.log('Time not selected');
-        } else {
-          var selectedTime = new Date(val * 1000);
-          console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
-        }
-      },
-      inputTime: 50400,
-      format: 24,
-      setLabel: 'Set'
 
 .controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal, StationList) {
 
@@ -103,7 +81,6 @@ angular.module('smartAlarm.controllers', [])
       ionicTimePicker.openTimePicker(ipObj);
     };
     ionicTimePicker.openTimePicker(ipObj);
-  };
 })
 
 .controller('SignupCtrl', function($scope, $state, SignUp, $location) {
