@@ -28,8 +28,10 @@ angular.module('smartAlarm.controllers', [])
 
 .controller('WeatherCtrl', function($scope, CurrentWeather) {
   CurrentWeather.success(function(data){
+    console.log(data);
     console.log(data.description);
     console.log(data.temperature);
+    console.log('scope', $scope);
     $scope.description = data.description;
     $scope.temperature = data.temperature;
   });
