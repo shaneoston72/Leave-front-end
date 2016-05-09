@@ -13,9 +13,10 @@
 
       </ion-item>
     </ion-list>
+    <div ng-controller="ExampleController">
+        <button class="button" ng-click="add()">Add notification</button>
+        <button class="button" ng-click="isScheduled()">Is Scheduled</button>
+    </div>
   </ion-content>
-  <ion-content ng-controller="ExampleController">
-      <button class="button" ng-click="add()">Add notification</button>
-      <button class="button" ng-click="isScheduled()">Is Scheduled</button>
-  </ion-content>
+
 </ion-view>

@@ -85,6 +85,16 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
         controller: 'AccountCtrl'
       }
     }
+  })
+
+  .state('tab.alarm', {
+    url: '/alarm',
+    views : {
+      'tab-alarm' :{
+        templateUrl: 'templates/tab-alarm.html',
+        controller: 'AlarmCtrl'
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/tab/dashboard');
