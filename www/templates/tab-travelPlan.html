@@ -5,7 +5,11 @@
         Where will you start?
       </div>
       <div class="item item-body">
-        <button class="button button-positive button-block" modal-select="" ng-model="fromStation" options="stationNames" has-search="true">
+        <button class="button button-positive button-block"
+                modal-select=""
+                ng-model="trip.fromStation"
+                options="stationNames"
+                has-search="true">
           Departure station
           <div class="option">
             <h2>{{option.Station | capitalize: true}}</h2>
@@ -13,28 +17,51 @@
           </div>
         </button>
         <div>
-          fromStation: {{fromStation}}
+          fromStation: {{trip.fromStation}}
         </div>
       </div>
       <div id="toStation" class="item item-text-wrap">
         Where are you going?
       </div>
       <div class="item item-body">
-        <button class="button button-positive button-block" modal-select="" ng-model="toStation" options="stationNames" has-search="true">
-          Arrival station
-          <div class="option">
-            <h2>{{option.Station | capitalize: true}}</h2>
-            <p>{{option.ISC_Code}}</p>
-          </div>
+        <button class="button button-positive button-block"
+                modal-select=""
+                ng-model="trip.toStation"
+                options="stationNames"
+                has-search="true">
+                  Arrival station
+                <div class="option">
+                  <h2>{{option.Station | capitalize: true}}</h2>
+                  <p>{{option.ISC_Code}}</p>
+                </div>
         </button>
         <div>
-          toStation: {{toStation}}
+          toStation: {{trip.toStation}}
         </div>
       </div>
       <div class="item item-body padding-vertical">
         What time do you need to be there?
         <div class="option">
-          <button class="button button-block button-positive overflowShow" ng-click="openTimePicker()">Set arrival time</button>
+          <button class="button button-block button-positive overflowShow"
+                  ion-datetime-picker
+                  ng-model="trip.time">
+                    Set arrival time
+
+          </button>
+          <div>
+            arrivalTime: {{time}}
+          </div>
+        </div>
+      </div>
+      <div class="item item-body padding-vertical">
+        <div class="option">
+          <button class="button button-block button-positive overflowShow"
+                  ng-click="TravelPlanCtrl.getTime(trip)">
+                    Get trip
+          </button>
+          <div>
+            tripPlan: {{trip}}
+          </div>
         </div>
       </div>
       </div>

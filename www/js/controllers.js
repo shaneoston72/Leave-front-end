@@ -36,27 +36,38 @@ angular.module('smartAlarm.controllers', [])
   });
 })
 
-.controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal, StationList) {
+.controller('TravelPlanCtrl', function ($scope, StationList, GetTrip) {
 
   StationList.success(function(data) {
     $scope.stationNames = data;
   });
 
-  $scope.openTimePicker = function () {
-    var ipObj = {
-      callback: function (val) {
-        if (typeof (val) === 'undefined') {
-          console.log('Time not selected');
-        } else {
-          var selectedTime = new Date(val * 1000);
-          console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
-        }
-      },
-      inputTime: 50400,
-      format: 24,
-      setLabel: 'Set'
-    };
-    ionicTimePicker.openTimePicker(ipObj);
+  // $scope.openTimePicker = function () {
+  //   var ipObj = {
+  //     callback: function (val) {
+  //       if (typeof (val) === 'undefined') {
+  //         console.log('Time not selected');
+  //       } else {
+  //         var selectedTime = new Date(val * 1000);
+  //         $scope.time = { "hours": selectedTime.getUTCHours(), "minutes": selectedTime.getUTCMinutes() };
+  //         console.log($scope.time);
+  //       }
+  //     },
+  //     inputTime: 50400,
+  //     format: 24,
+  //     setLabel: 'Set'
+  //   };
+  //   ionicTimePicker.openTimePicker(ipObj);
+  // };
+
+  $scope.getTime = function(trip) {
+    var tripDetails = { 'fromStation': fromStation,
+                        'toStation': toStation,
+                        'arrivalTime': arrivalTime };
+    console.log(tripDetails);
+    GetTrip(tripDetails).success(function(data) {
+      console.log(data);
+    });
   };
 })
 
