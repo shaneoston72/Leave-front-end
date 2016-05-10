@@ -25,8 +25,8 @@ angular.module('smartAlarm.services', [])
     $cordovaLocalNotification.add({
         id: "1234",
         date: alarmTime,
-        message: "This is a message",
-        title: "This is a title",
+        message: "Get out of bed",
+        title: "Time to Wake up",
         autoCancel: true,
         sound: null
     }).then(function () {
