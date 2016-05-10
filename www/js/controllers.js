@@ -42,7 +42,6 @@ angular.module('smartAlarm.controllers', [])
     $scope.stationNames = data;
   });
 
-
   $scope.getTime = function(trip) {
     var newTime     = trip.time.toString().substr(16, 5);
 
@@ -67,7 +66,24 @@ angular.module('smartAlarm.controllers', [])
     new SignUp(details);
     $location.path('/tab/login');
   };
+})
 
+.controller("ExampleController", function($scope, $cordovaLocalNotification, NotificationScheduler) {
+  //
+  // var alarmTime = new Date();
+  // alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+
+    $scope.add = function(hours, minutes) {
+      var alarmTime = new Date();
+      alarmTime.setHours(hours, minutes);
+      console.log(alarmTime);
+      new NotificationScheduler(alarmTime);
+    };
+    $scope.isScheduled = function() {
+        $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
+            alert("Notification 1234 Scheduled: " + isScheduled);
+        });
+    };
 
 })
 

@@ -19,6 +19,23 @@ angular.module('smartAlarm.services', [])
   };
 })
 
+.factory('NotificationScheduler', function($cordovaLocalNotification){
+
+  var add = function(alarmTime) {
+    $cordovaLocalNotification.add({
+        id: "1234",
+        date: alarmTime,
+        message: "Get out of bed",
+        title: "Time to Wake up",
+        autoCancel: true,
+        sound: null
+    }).then(function () {
+        console.log("The notification has been set");
+    });
+  };
+  return add;
+})
+
 .service('StationList', function($http) {
   return $http.get('/stations');
 })
