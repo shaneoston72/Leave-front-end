@@ -44,16 +44,18 @@ angular.module('smartAlarm.controllers', [])
 
 
   $scope.getTime = function(trip) {
-    var newTime     = trip.time.toString().substr(16);
-    var newHours    = newTime.substr(0, 2);
-    var newMinutes  = newTime.substr(3, 2);
+    var newTime     = trip.time.toString().substr(16, 5);
 
-    var tripDetails = { 'fromStation': trip.fromStation.ICS_Code,
-                        'toStation': trip.toStation.ICS_Code,
-                        'arrivalTime': { 'hours': newHours, 'minutes': newMinutes } };
-
+    var tripDetails = {'alarm':
+                      { 'from_station': trip.fromStation.ICS_Code,
+                        'to_station': trip.toStation.ICS_Code,
+                        'arrival_time': newTime,
+                        'alarm_offset': '0'
+                      }
+                    };
+                      console.log(tripDetails);
     GetTrip(tripDetails).success(function(data) {
-      console.log(data);
+      console.log('im here', data);
     });
   };
 })

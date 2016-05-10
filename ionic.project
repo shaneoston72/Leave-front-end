@@ -19,7 +19,7 @@
       "proxyUrl": "http://localhost:3000/weather_api"
     },
     {
-      "path": "/api/getTrip",
+      "path": "/alarms",
       "proxyUrl": "http://localhost:3000/alarms"
     }
   ]

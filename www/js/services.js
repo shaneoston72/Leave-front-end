@@ -29,6 +29,11 @@ angular.module('smartAlarm.services', [])
 
 .service('GetTrip', function($http) {
   return function (tripDetails) {
-      return $http.get('/api/getTrip', [{'getTrip': {method: 'post'}, 'params': tripDetails}]);
+      return $http({
+        method: 'POST',
+        url: '/alarms',
+        contentType: 'application/json',
+        data: tripDetails
+      });
   };
 });
