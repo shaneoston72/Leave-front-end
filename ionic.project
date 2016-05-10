@@ -7,8 +7,8 @@
       "proxyUrl": "http://localhost:3000/users/sign_in.json"
     },
     {
-      "path": "/api/stations",
-      "proxyUrl": "http://localhost:3000/station_list_api"
+      "path": "/stations",
+      "proxyUrl": "http://localhost:3000/stations"
     },
     {
       "path": "/api/user/signup",
@@ -20,7 +20,7 @@
     },
     {
       "path": "/api/getTrip",
-      "proxyUrl": "http://localhost:3000/alarm_api"
+      "proxyUrl": "http://localhost:3000/alarms"
     }
   ]
 }

@@ -20,7 +20,7 @@ angular.module('smartAlarm.services', [])
 })
 
 .service('StationList', function($http) {
-  return $http.get('/api/stations');
+  return $http.get('/stations');
 })
 
 .service('CurrentWeather', function($http) {
