@@ -36,7 +36,7 @@ angular.module('smartAlarm.controllers', [])
   });
 })
 
-.controller('TravelPlanCtrl', function ($scope, StationList, GetTrip) {
+.controller('TravelPlanCtrl', function ($scope, StationList, GetTrip, $http) {
 
   StationList.success(function(data) {
     $scope.stationNames = data;
@@ -55,7 +55,12 @@ angular.module('smartAlarm.controllers', [])
                     };
                       console.log(tripDetails);
     GetTrip(tripDetails).success(function(data) {
-      console.log('im here', data);
+      console.log(data);
+      return $http({
+        method: 'GET',
+        url: '/alarms',
+        contentType: 'application/json'
+      });
     });
   };
 })
