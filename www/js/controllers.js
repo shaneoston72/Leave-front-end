@@ -55,11 +55,12 @@ angular.module('smartAlarm.controllers', [])
                     };
                       console.log(tripDetails);
     GetTrip(tripDetails).success(function(data) {
-      console.log(data);
       return $http({
         method: 'GET',
         url: '/alarms',
         contentType: 'application/json'
+      }).success(function(data){
+        console.log(data);
       });
     });
   };
