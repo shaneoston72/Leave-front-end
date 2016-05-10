@@ -20,7 +20,7 @@
     },
     {
       "path": "/api/getTrip",
-      "proxyUrl": "http://localhost:3000/alarm_api/new"
+      "proxyUrl": "http://localhost:3000/alarm_api"
     }
   ]
 }
