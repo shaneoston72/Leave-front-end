@@ -53,7 +53,7 @@ angular.module('smartAlarm.controllers', [])
                         'alarm_offset': '0'
                       }
                     };
-                      console.log(tripDetails);
+
     GetTrip(tripDetails).success(function(data) {
       return $http({
         method: 'GET',
