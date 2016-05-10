@@ -55,6 +55,11 @@ angular.module('smartAlarm.controllers', [])
                       console.log(tripDetails);
     GetTrip(tripDetails).success(function(data) {
       console.log('im here', data);
+      var hours = parseInt(data.time_to_leave.subsr(0,2));
+      var minutes = parseInt(data.time_to_leave.subsr(3,4));
+      var alarmTime = new Date();
+      alarmTime.setHours(hours, minutes);
+      new NotificationScheduler(alarmTime);
     });
   };
 })
