@@ -35,7 +35,7 @@ angular.module('smartAlarm.services', [])
         message: "It's time to go!",
         title: "LEAVE",
         autoCancel: true,
-        sound: null
+        sound: 'file://assets/Drop-what-youre-doing-and-leave-now.mp3'
     }).then(function () {
         alert("Your alarm to LEAVE has been set!");
     });
