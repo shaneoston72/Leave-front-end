@@ -38,7 +38,7 @@ angular.module('smartAlarm.controllers', [])
         $rootScope.alarmMessage ="Your alarm has been set for " + $rootScope.timeToLeave;
         $rootScope.dashboardMessage = "LEAVE at " + $rootScope.timeToLeave;
         console.log($rootScope.alarmMessage);
-        new NotificationScheduler(alarmTime);
+        new Notification(alarmTime);
       });
     });
   };
@@ -53,16 +53,13 @@ angular.module('smartAlarm.controllers', [])
   };
 })
 
-.controller("ExampleController", function($scope, $cordovaLocalNotification, NotificationScheduler) {
-  //
-  // var alarmTime = new Date();
-  // alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+.controller("ExampleController", function($scope, $cordovaLocalNotification, Notification) {
 
     $scope.add = function(hours, minutes) {
       var alarmTime = new Date();
       alarmTime.setHours(hours, minutes);
       console.log(alarmTime);
-      new NotificationScheduler(alarmTime);
+      new Notification(alarmTime);
     };
     $scope.isScheduled = function() {
         $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
