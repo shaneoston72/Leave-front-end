@@ -1,6 +1,15 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
     <ion-list>
+
+      <ion-item id="alarm" class="item-remove-animate item-icon-right" type="item-text-wrap">
+        <h2> Current Alarm </h2>
+        <ul id='currentAlarm'>
+         <li>{{ dashboardMessage }}</li>
+       </ul>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
       <ion-item id="travelPlan" class="item-remove-animate item-icon-right" type="item-text-wrap" href="#/tab/travelPlan">
         <h2> Travel plan </h2>
         <i class="icon ion-chevron-right icon-accessory"></i>

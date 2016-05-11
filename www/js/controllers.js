@@ -37,6 +37,7 @@ angular.module('smartAlarm.controllers', [])
       }).success(function(data){
         $rootScope.timeToLeave = data.time_to_leave;
         $rootScope.alarmMessage ="Your alarm has been set for " + $rootScope.timeToLeave;
+        $rootScope.dashboardMessage = "LEAVE at " + $rootScope.timeToLeave;
         console.log($rootScope.alarmMessage);
       });
     });
