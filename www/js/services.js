@@ -37,7 +37,7 @@ angular.module('smartAlarm.services', [])
         autoCancel: true,
         sound: null
     }).then(function () {
-        console.log("The notification has been set");
+        alert("The notification has been set");
     });
   };
   return add;
