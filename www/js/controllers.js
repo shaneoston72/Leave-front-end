@@ -21,12 +21,12 @@ angular.module('smartAlarm.controllers', [])
     var newTime     = trip.time.toString().substr(16, 5);
 
     var tripDetails = {'alarm':
-                      { 'from_station': trip.fromStation.ICS_Code,
-                        'to_station': trip.toStation.ICS_Code,
-                        'arrival_time': newTime,
-                        'alarm_offset': '0'
-                      }
-                    };
+                        { 'from_station': trip.fromStation.ICS_Code,
+                          'to_station'  : trip.toStation.ICS_Code,
+                          'arrival_time': newTime,
+                          'alarm_offset': '0'
+                        }
+                      };
 
     GetTrip(tripDetails).success(function(data) {
       return $http({
