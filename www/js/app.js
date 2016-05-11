@@ -1,21 +1,10 @@
-angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ionic-timepicker', 'ionic-modal-select'])
+angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.services', 'ngResource', 'ion-datetime-picker', 'ionic-modal-select'])
 
 .filter('capitalize', function() {
   return function(input, all) {
     var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
     return (!!input) ? input.replace(reg, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';
   };
-})
-
-.config(function (ionicTimePickerProvider) {
-  var timePickerObj = {
-    inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60)),
-    format: 24,
-    step: 5,
-    setLabel: 'Set',
-    closeLabel: 'Close'
-  };
-  ionicTimePickerProvider.configTimePicker(timePickerObj);
 })
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -87,7 +76,7 @@ angular.module('smartAlarm', ['ionic', 'smartAlarm.controllers', 'smartAlarm.ser
     }
   });
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/tab/dashboard');
 
 })
 

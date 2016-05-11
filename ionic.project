@@ -1,14 +1,14 @@
 {
   "name": "smartAlarm-mobile",
-  "app_id": "",
+  "app_id": "9c6cf829",
   "proxies": [
     {
       "path": "/api/user",
       "proxyUrl": "http://localhost:3000/users/sign_in.json"
     },
     {
-      "path": "/api/stations",
-      "proxyUrl": "http://localhost:3000/station_list_api"
+      "path": "/stations",
+      "proxyUrl": "http://localhost:3000/stations"
     },
     {
       "path": "/api/user/signup",
@@ -17,6 +17,10 @@
     {
       "path": "/api/weather",
       "proxyUrl": "http://localhost:3000/weather_api"
+    },
+    {
+      "path": "/alarms",
+      "proxyUrl": "http://localhost:3000/alarms"
     }
   ]
 }

@@ -1,30 +1,5 @@
 angular.module('smartAlarm.controllers', [])
 
-.controller('LoginCtrl', function($scope, $location, UserSession, $ionicPopup, $rootScope) {
-  $scope.data = {};
-
-  $scope.login = function() {
-    var user_session = new UserSession({ user: $scope.data });
-    user_session.$save(
-      function(data) {
-        window.localStorage['userId'] = data.id;
-        window.localStorage['userName'] = data.name;
-        $location.path('/tab/dashboard');
-      },
-      function(err){
-        var error = err["data"]["error"] || err.data.join('. ')
-        var confirmPopup = $ionicPopup.alert({
-          title: 'An error occured',
-          template: error
-        });
-      }
-    );
-  };
-  $scope.redirect = function() {
-    $location.path('/signup');
-  };
-})
-
 .controller('DashboardCtrl', function($scope) {
 
 })
@@ -36,27 +11,36 @@ angular.module('smartAlarm.controllers', [])
   });
 })
 
-.controller('TravelPlanCtrl', function ($scope, ionicTimePicker, $ionicModal, StationList) {
+.controller('TravelPlanCtrl', function ($scope, StationList, GetTrip, $http, $rootScope) {
 
   StationList.success(function(data) {
     $scope.stationNames = data;
   });
 
-  $scope.openTimePicker = function () {
-    var ipObj = {
-      callback: function (val) {
-        if (typeof (val) === 'undefined') {
-          console.log('Time not selected');
-        } else {
-          var selectedTime = new Date(val * 1000);
-          console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
-        }
-      },
-      inputTime: 50400,
-      format: 24,
-      setLabel: 'Set'
-    };
-    ionicTimePicker.openTimePicker(ipObj);
+
+  $scope.getTime = function(trip) {
+    var newTime     = trip.time.toString().substr(16, 5);
+
+    var tripDetails = {'alarm':
+                      { 'from_station': trip.fromStation.ICS_Code,
+                        'to_station': trip.toStation.ICS_Code,
+                        'arrival_time': newTime,
+                        'alarm_offset': '0'
+                      }
+                    };
+
+    GetTrip(tripDetails).success(function(data) {
+      return $http({
+        method: 'GET',
+        url: '/alarms',
+        contentType: 'application/json'
+      }).success(function(data){
+        $rootScope.timeToLeave = data.time_to_leave;
+        $rootScope.alarmMessage ="Your alarm has been set for " + $rootScope.timeToLeave;
+        $rootScope.dashboardMessage = "LEAVE at " + $rootScope.timeToLeave;
+        console.log($rootScope.alarmMessage);
+      });
+    });
   };
 })
 

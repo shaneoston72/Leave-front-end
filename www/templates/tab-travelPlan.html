@@ -1,40 +1,65 @@
 <ion-view view-title="Travel Plan">
   <ion-content class="scroll-content ionic-scroll has-header has-tabs">
     <div id="travelPlan" class="scroll" style="transform: translate3d(0px, 34px, 0px) scale(1);">
-      <div id="fromStation" class="item item-text-wrap">
-        Where will you start?
+      <div id="alarmSetText" class="item text-center">
+        {{ alarmMessage }}
       </div>
-      <div class="item item-body">
-        <button class="button button-positive button-block" modal-select="" ng-model="fromStation" options="stationNames" has-search="true">
-          Departure station
-          <div class="option">
-            <h2>{{option.Station | capitalize: true}}</h2>
-            <p>{{option.ISC_Code}}</p>
+      <div id="fromStation" class=" item-text-wrap">
+        <div class="item">
+          <button class="button button-positive button-block"
+                modal-select=""
+                ng-model="trip.fromStation"
+                options="stationNames"
+                has-search="true">
+                Where will you start?
+                <div class="option">
+                  <h2>{{option.Station | capitalize: true}}</h2>
+                  <p>{{option.ISC_Code}}</p>
+                </div>
+          </button>
+          <div class="text-center">
+            {{trip.fromStation.Station | capitalize: true}}
           </div>
-        </button>
-        <div>
-          fromStation: {{fromStation}}
         </div>
       </div>
-      <div id="toStation" class="item item-text-wrap">
-        Where are you going?
-      </div>
-      <div class="item item-body">
-        <button class="button button-positive button-block" modal-select="" ng-model="toStation" options="stationNames" has-search="true">
-          Arrival station
-          <div class="option">
-            <h2>{{option.Station | capitalize: true}}</h2>
-            <p>{{option.ISC_Code}}</p>
+      <div id="toStation" class="item-text-wrap">
+        <div class="item">
+          <button class="button button-positive button-block"
+                  modal-select=""
+                  ng-model="trip.toStation"
+                  options="stationNames"
+                  has-search="true">
+                    Where are you going?
+                  <div class="option">
+                    <h2>{{option.Station | capitalize: true}}</h2>
+                    <p>{{option.ISC_Code}}</p>
+                  </div>
+          </button>
+          <div class="text-center">
+            {{trip.toStation.Station | capitalize: true}}
           </div>
-        </button>
-        <div>
-          toStation: {{toStation}}
         </div>
       </div>
       <div class="item item-body padding-vertical">
-        What time do you need to be there?
         <div class="option">
-          <button class="button button-block button-positive overflowShow" ng-click="openTimePicker()">Set arrival time</button>
+          <button id="arrivalTime"
+                  class="button button-block button-positive overflowShow"
+                  ion-datetime-picker time
+                  ng-model="trip.time">
+                    What time do you need to be there?
+          </button>
+          <div class="text-center">
+            {{trip.time}}
+          </div>
+        </div>
+      </div>
+      <div class="item item-body padding-vertical">
+        <div class="option">
+          <button id="getTrip"
+                  class="button button-block button-energized overflowShow"
+                  ng-click="getTime(trip)">
+                    Get trip
+          </button>
         </div>
       </div>
       </div>
