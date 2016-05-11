@@ -1,6 +1,9 @@
 <ion-view view-title="Travel Plan">
   <ion-content class="scroll-content ionic-scroll has-header has-tabs">
     <div id="travelPlan" class="scroll" style="transform: translate3d(0px, 34px, 0px) scale(1);">
+      <div id="alarmSetText" class="item text-center">
+        {{ alarmMessage }}
+      </div>
       <div id="fromStation" class=" item-text-wrap">
         <div class="item">
           <button class="button button-positive button-block"
@@ -39,7 +42,8 @@
       </div>
       <div class="item item-body padding-vertical">
         <div class="option">
-          <button class="button button-block button-positive overflowShow"
+          <button id="arrivalTime"
+                  class="button button-block button-positive overflowShow"
                   ion-datetime-picker time
                   ng-model="trip.time">
                     What time do you need to be there?
@@ -51,12 +55,10 @@
       </div>
       <div class="item item-body padding-vertical">
         <div class="option">
-          <button class="button button-block button-energized overflowShow"
+          <button id="getTrip"
+                  class="button button-block button-energized overflowShow"
                   ng-click="getTime(trip)">
                     Get trip
-                    <div class="text-center">
-                      {{trip}}
-                    </div>
           </button>
         </div>
       </div>
