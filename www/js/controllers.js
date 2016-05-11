@@ -11,7 +11,7 @@ angular.module('smartAlarm.controllers', [])
   });
 })
 
-.controller('TravelPlanCtrl', function ($scope, $cordovaLocalNotification, Notification, StationList, GetTrip, $http, $rootScope) {
+.controller('TravelPlanCtrl', function ($scope, $cordovaLocalNotification, Notification, StationList, PostTrip, GetTrip, $http, $rootScope) {
 
   StationList.success(function(data) {
     $scope.stationNames = data;
@@ -28,12 +28,8 @@ angular.module('smartAlarm.controllers', [])
                         }
                       };
 
-    GetTrip(tripDetails).success(function(data) {
-      return $http({
-        method: 'GET',
-        url: 'https://makers-alarm.herokuapp.com/alarms',
-        contentType: 'application/json'
-      }).success(function(data){
+    PostTrip(tripDetails).success(function(data){
+      return GetTrip(data).success(function(data){
         $rootScope.timeToLeave = data.time_to_leave;
         $rootScope.alarmMessage ="Your alarm has been set for " + $rootScope.timeToLeave;
         $rootScope.dashboardMessage = "LEAVE at " + $rootScope.timeToLeave;

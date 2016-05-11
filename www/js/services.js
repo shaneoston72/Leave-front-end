@@ -51,13 +51,23 @@ angular.module('smartAlarm.services', [])
   return $http.get('https://makers-alarm.herokuapp.com/weather_api');
 })
 
-.service('GetTrip', function($http) {
+.service('PostTrip', function($http) {
   return function (tripDetails) {
       return $http({
         method: 'POST',
         url: 'https://makers-alarm.herokuapp.com/alarms',
         contentType: 'application/json',
         data: tripDetails
+      });
+  };
+})
+
+.service('GetTrip', function($http) {
+  return function (tripDetails) {
+      return $http({
+        method: 'GET',
+        url: 'https://makers-alarm.herokuapp.com/alarms',
+        contentType: 'application/json'
       });
   };
 });
