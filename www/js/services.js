@@ -37,20 +37,20 @@ angular.module('smartAlarm.services', [])
 })
 
 .service('StationList', function($http) {
-  return $http.get('/stations');
+  return $http.get('https://makers-alarm.herokuapp.com/stations');
 })
 
 .service('CurrentWeather', function($http) {
-  return $http.get('/api/weather');
+  return $http.get('https://makers-alarm.herokuapp.com/weather_api');
 })
 
 .service('GetTrip', function($http) {
   return function (tripDetails) {
       return $http({
         method: 'POST',
-        url: '/alarms',
+        url: 'https://makers-alarm.herokuapp.com/alarms',
         contentType: 'application/json',
         data: tripDetails
       });
   };
-})
+});

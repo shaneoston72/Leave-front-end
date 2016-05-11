@@ -31,7 +31,7 @@ angular.module('smartAlarm.controllers', [])
     GetTrip(tripDetails).success(function(data) {
       return $http({
         method: 'GET',
-        url: '/alarms',
+        url: 'https://makers-alarm.herokuapp.com/alarms',
         contentType: 'application/json'
       }).success(function(data){
         $rootScope.timeToLeave = data.time_to_leave;
