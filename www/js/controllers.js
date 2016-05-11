@@ -1,30 +1,5 @@
 angular.module('smartAlarm.controllers', [])
 
-.controller('LoginCtrl', function($scope, $location, UserSession, $ionicPopup, $rootScope) {
-  $scope.data = {};
-
-  $scope.login = function() {
-    var user_session = new UserSession({ user: $scope.data });
-    user_session.$save(
-      function(data) {
-        window.localStorage['userId'] = data.id;
-        window.localStorage['userName'] = data.name;
-        $location.path('/tab/dashboard');
-      },
-      function(err){
-        var error = err["data"]["error"] || err.data.join('. ')
-        var confirmPopup = $ionicPopup.alert({
-          title: 'An error occured',
-          template: error
-        });
-      }
-    );
-  };
-  $scope.redirect = function() {
-    $location.path('/signup');
-  };
-})
-
 .controller('DashboardCtrl', function($scope) {
 
 })
@@ -36,7 +11,7 @@ angular.module('smartAlarm.controllers', [])
   });
 })
 
-.controller('TravelPlanCtrl', function ($scope, StationList, GetTrip, $http) {
+.controller('TravelPlanCtrl', function ($scope, StationList, GetTrip, $http, $rootScope) {
 
   StationList.success(function(data) {
     $scope.stationNames = data;
@@ -60,7 +35,10 @@ angular.module('smartAlarm.controllers', [])
         url: '/alarms',
         contentType: 'application/json'
       }).success(function(data){
-        console.log(data);
+        $rootScope.timeToLeave = data.time_to_leave;
+        $rootScope.alarmMessage ="Your alarm has been set for " + $rootScope.timeToLeave;
+        $rootScope.dashboardMessage = "LEAVE at " + $rootScope.timeToLeave;
+        console.log($rootScope.alarmMessage);
       });
     });
   };
