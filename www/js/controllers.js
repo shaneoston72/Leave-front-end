@@ -11,7 +11,7 @@ angular.module('smartAlarm.controllers', [])
   });
 })
 
-.controller('TravelPlanCtrl', function ($scope, $cordovaLocalNotification, NotificationScheduler, StationList, GetTrip, $http, $rootScope) {
+.controller('TravelPlanCtrl', function ($scope, $cordovaLocalNotification, Notification, StationList, GetTrip, $http, $rootScope) {
 
   StationList.success(function(data) {
     $scope.stationNames = data;
@@ -38,20 +38,8 @@ angular.module('smartAlarm.controllers', [])
         $rootScope.alarmMessage ="Your alarm has been set for " + $rootScope.timeToLeave;
         $rootScope.dashboardMessage = "LEAVE at " + $rootScope.timeToLeave;
         console.log($rootScope.alarmMessage);
-        var hours = parseInt(data.time_to_leave.substr(0,2));
-        var minutes = parseInt(data.time_to_leave.substr(3,4));
-        var alarmTime = new Date();
-        alarmTime.setHours(hours, minutes);
-        console.log("controller", alarmTime);
         new NotificationScheduler(alarmTime);
       });
-      // console.log('im here', data);
-      // var hours = parseInt(data.time_to_leave.subsr(0,2));
-      // var minutes = parseInt(data.time_to_leave.subsr(3,4));
-      // var alarmTime = new Date();
-      // alarmTime.setHours(hours, minutes);
-      // console.log(alarmTime);
-      // new NotificationScheduler(alarmTime);
     });
   };
 })
