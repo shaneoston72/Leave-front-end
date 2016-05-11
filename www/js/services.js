@@ -32,12 +32,12 @@ angular.module('smartAlarm.services', [])
     $cordovaLocalNotification.add({
         id: "1234",
         date: alarmTime,
-        message: "Get out of bed",
-        title: "Time to Wake up",
+        message: "It's time to go!",
+        title: "LEAVE",
         autoCancel: true,
         sound: null
     }).then(function () {
-        alert("The notification has been set");
+        alert("Your alarm to LEAVE has been set!");
     });
   };
   return add;

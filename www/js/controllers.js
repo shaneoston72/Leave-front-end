@@ -33,7 +33,6 @@ angular.module('smartAlarm.controllers', [])
         $rootScope.timeToLeave = data.time_to_leave;
         $rootScope.alarmMessage ="Your alarm has been set for " + $rootScope.timeToLeave;
         $rootScope.dashboardMessage = "LEAVE at " + $rootScope.timeToLeave;
-        console.log($rootScope.alarmMessage);
         new Notification(data);
       });
     });
@@ -42,7 +41,7 @@ angular.module('smartAlarm.controllers', [])
 
 .controller('SignupCtrl', function($scope, $state, SignUp, $location) {
   $scope.signUp = function(email, password) {
-    var details = { 'email' : email,
+    var details = { 'email'   : email,
                     'password': password };
     new SignUp(details);
     $location.path('/tab/login');
