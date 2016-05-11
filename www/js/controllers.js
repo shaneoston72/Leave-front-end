@@ -59,6 +59,7 @@ angular.module('smartAlarm.controllers', [])
       var minutes = parseInt(data.time_to_leave.subsr(3,4));
       var alarmTime = new Date();
       alarmTime.setHours(hours, minutes);
+      console.log(alarmTime);
       new NotificationScheduler(alarmTime);
     });
   };
