@@ -16,7 +16,7 @@
     },
     {
       "path": "/api/weather",
-      "proxyUrl": "http://localhost:3000/weather_api"
+      "proxyUrl": "http://localhost:3000/weathers"
     },
     {
       "path": "/alarms",
