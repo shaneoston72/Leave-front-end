@@ -53,22 +53,6 @@ angular.module('smartAlarm.controllers', [])
   };
 })
 
-.controller("ExampleController", function($scope, $cordovaLocalNotification, Notification) {
-
-    $scope.add = function(hours, minutes) {
-      var alarmTime = new Date();
-      alarmTime.setHours(hours, minutes);
-      console.log(alarmTime);
-      new Notification(alarmTime);
-    };
-    $scope.isScheduled = function() {
-        $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
-            alert("Notification 1234 Scheduled: " + isScheduled);
-        });
-    };
-
-})
-
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
