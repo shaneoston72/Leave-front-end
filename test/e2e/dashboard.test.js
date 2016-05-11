@@ -23,11 +23,9 @@ describe('Dashboard', function() {
     expect(weatherTemp.isPresent()).toBe(true);
   });
 
-  // it('takes users to weather page', function() {
-  //   var weather = element(by.id('weather'));
-  //   weather.click().then(function() {
-  //     expect(browser.getLocationAbsUrl()).toMatch('/tab/weather');
-  //   });
-  // });
+  it('shows a current alarm', function() {
+    var weather = element(by.id('alarm'));
+    expect(weather.isPresent()).toBe(true);
+  });
 
 });
