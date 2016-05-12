@@ -27,7 +27,7 @@ angular.module('smartAlarm.services', [])
     return new Date().setHours(hours, minutes);
   };
 
-  var add = function(data) {
+  var scheduleNotification = function(data) {
     var alarmTime = setAlarmTime(data);
     $cordovaLocalNotification.add({
         id: "1234",
@@ -40,7 +40,7 @@ angular.module('smartAlarm.services', [])
         alert("Your alarm to LEAVE has been set!");
     });
   };
-  return add;
+  return scheduleNotification;
 })
 
 .service('StationList', function($http) {
